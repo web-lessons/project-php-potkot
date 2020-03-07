@@ -1,0 +1,15 @@
+.logo{
+    max-height: 100px;
+}
+
+.phone{
+    padding: .5rem 1rem;
+}
+
+.dropdown-menu {
+    z-index: 2000 !important;
+}
+
+.navbar-nav {
+    width: 100%;
+}
