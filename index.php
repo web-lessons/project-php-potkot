@@ -78,6 +78,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <div class="card-body">
                         <h2 class="card-title"><?= $product ['name'] ?></h2>
                         <p class="card-text"><?= $product ['description'] ?></p>
+                        <a href="/product.php?id=<?= $product['id'] ?>">Подробнее</a>
                     </div>
                 </div>
             </div>
