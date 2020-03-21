@@ -1,4 +1,13 @@
-<?php require_once 'config/db.php'; ?>
+<?php
+require_once 'config/db.php';
+require_once 'core/function.php';
+
+if (!isLogin()) {
+    die('Доступ запрещен');
+}
+
+?>
+
 <?php require_once "template/header.php" ?>
 <?php
 error_reporting(E_ALL & ~E_NOTICE);

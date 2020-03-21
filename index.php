@@ -1,4 +1,5 @@
 <?php require_once 'config/db.php'; ?>
+<?php require_once 'core/function.php'; ?>
 <?php require_once "template/header.php" ?>
 <?php
 $query = 'SELECT * FROM `products`';
@@ -79,7 +80,9 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <h2 class="card-title"><?= $product ['name'] ?></h2>
                         <p class="card-text"><?= $product ['description'] ?></p>
                         <a href="/product.php?id=<?= $product['id'] ?>">Подробнее</a>
-                        <a class="btn btn-danger" href="/delete.php?id=<?= $product['id'] ?>">Удалить</a>
+                        <?php if (isLogin()): ?>
+                            <a class="btn btn-danger" href="/delete.php?id=<?= $product['id'] ?>">Удалить</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

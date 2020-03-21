@@ -1,6 +1,11 @@
 <?php
-
 require_once "config/db.php";
+require_once 'core/function.php';
+
+if (!isLogin()) {
+    die('Доступ запрещен');
+}
+
 $id = $_GET['id'];
 
 $sql = "DELETE FROM products WHERE id=".$id;
