@@ -1,3 +1,4 @@
+<?php require_once 'core/function.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,15 +33,11 @@
         </div>
         <div class="col-md-3 d-none d-md-block">
             <ul class="nav justify-content-end">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Личный кабинет</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Заказы</a>
-                        <a class="dropdown-item" href="#">Профиль</a>
-                        <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Выход</a>
-                    </div>
-                </li>
+                <?php if (isLogin()): ?>
+                    <li class="nav-item"><a class="nav-link" href="/logout.php">Выход</a></li>
+                <?php else: ?>
+                    <li class="nav-item"><a class="nav-link" href="/login.php">Войти</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
