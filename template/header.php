@@ -1,4 +1,9 @@
-<?php require_once 'core/function.php'; ?>
+<?php
+require_once 'core/function.php';
+if (!empty($_POST['login']) AND !empty($_POST['password'])) {
+    login($_POST['login'], $_POST['password'], $conn);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

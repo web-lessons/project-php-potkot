@@ -2,10 +2,6 @@
 require_once 'config/db.php';
 require_once "template/header.php";
 
-if (!empty($_POST['login']) AND !empty($_POST['password'])) {
-    login($_POST['login'], $_POST['password'], $conn);
-}
-
 ?>
     <div class="container">
         <section class="mt-4">

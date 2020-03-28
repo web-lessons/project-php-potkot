@@ -1,5 +1,11 @@
-<?php require_once 'config/db.php'; ?>
-<?php require_once "template/header.php" ?>
+<?php
+require_once 'config/db.php';
+require_once "template/header.php";
+
+if (!isLogin()) {
+    die('Доступ запрещен');
+}
+?>
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
 if (!empty($_POST)):
