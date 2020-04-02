@@ -39,6 +39,7 @@ if (!empty($_POST['login']) AND !empty($_POST['password'])) {
         <div class="col-md-3 d-none d-md-block">
             <ul class="nav justify-content-end">
                 <?php if (isLogin()): ?>
+                    <li class="nav-item"><a class="nav-link" href="/admin/">Админка</a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout.php">Выход</a></li>
                 <?php else: ?>
                     <li class="nav-item"><a class="nav-link" href="/login.php">Войти</a></li>
