@@ -81,7 +81,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <a href="/product.php?id=<?= $product['id'] ?>">Подробнее</a>
                         <?php if (isLogin()): ?>
                             <a class="btn btn-danger" href="/delete.php?id=<?= $product['id'] ?>">Удалить</a>
-                        <?php endif ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

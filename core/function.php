@@ -13,6 +13,7 @@ function login($login, $password, $conn)
         $_SESSION['id'] = $authUser['id'];
         $_SESSION['name'] = $authUser['name'];
 
+        return true;
     } else {
         return false;
     }
