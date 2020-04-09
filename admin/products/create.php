@@ -1,6 +1,6 @@
 <?php
-require_once 'config/db.php';
-require_once "template/header.php";
+require_once __DIR__.'/../../config/db.php';
+require_once __DIR__."/../template/header.php";
 
 if (!isLogin()) {
     die('Доступ запрещен');
@@ -9,7 +9,6 @@ if (!isLogin()) {
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
 if (!empty($_POST)):
-
     if (!empty($_FILES["img"]['name'])):
         $ext = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
         $fileName = uniqid().".".$ext;
@@ -26,8 +25,14 @@ if (!empty($_POST)):
         VALUES ('{$name}', '{$slug}', '{$img}', '{$description}', {$price})";
 
     $result = mysqli_query($conn, $sql);
-
 endif;
+
+if (!empty($_GET['id'])) {
+    $sql = "SELECT * FROM products WHERE=".$_GET['id'];
+    $result = mysqli_query($conn, $sql);
+    
+
+}
 ?>
 <div class="container">
     <? if (!empty($_POST)): ?>
@@ -46,6 +51,8 @@ endif;
         <div class="col-md-6">
             <h1>Создание товара</h1>
             <form class="mb-4" method="post" enctype="multipart/form-data">
+
+
                 <div class="form-group">
                     <label for="name">Название <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -72,4 +79,4 @@ endif;
     </div>
 
 </div>
-<?php require_once "template/footer.php" ?>
+<?php require_once __DIR__."/../template/footer.php" ?>
