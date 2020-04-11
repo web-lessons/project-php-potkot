@@ -28,10 +28,15 @@ if (!empty($_POST)):
 endif;
 
 if (!empty($_GET['id'])) {
-    $sql = "SELECT * FROM products WHERE=".$_GET['id'];
-    $result = mysqli_query($conn, $sql);
-    
+    $sql = "SELECT * FROM products WHERE id=".$_GET['id'];
 
+    $result = mysqli_query($conn, $sql);
+
+    if ($result === false) {
+        die("Ошибка сервера");
+    }
+
+    $product = mysqli_fetch_array($result);
 }
 ?>
 <div class="container">
@@ -49,7 +54,7 @@ if (!empty($_GET['id'])) {
 
     <div class="row">
         <div class="col-md-6">
-            <h1>Создание товара</h1>
+            <h1>Редактирование товара</h1>
             <form class="mb-4" method="post" enctype="multipart/form-data">
 
 

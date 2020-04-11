@@ -30,8 +30,8 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <th scope="row"><?= $product['id'] ?></th>
                 <th><img width="50px;" src="<?= $product['img'] ?>"></th>
                 <th><?= $product['slug'] ?></th>
-                <td><a href="/admin/products/create.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a></td>
-                <td><a href="/admin/products/create.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a></td>
+                <td><a href="/admin/products/edit.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a></td>
+                <td><a href="/admin/products/edit.php?id=<?= $product['id'] ?>">Изменить</a></td>
                 <td><a href="/admin/products/delete.php?id=<?= $product['id'] ?>" class="btn btn-danger">X</a> </td>
             </tr>
         <? endforeach; ?>
