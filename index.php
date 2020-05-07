@@ -80,7 +80,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <p class="card-text"><?= $product ['description'] ?></p>
                         <a href="/product.php?id=<?= $product['id'] ?>">Подробнее</a>
                         <?php if (isLogin()): ?>
-                            <a class="btn btn-danger" href="/delete.php?id=<?= $product['id'] ?>">Удалить</a>
+                            <a class="btn btn-danger" href="/admin/products/delete.php?id=<?= $product['id'] ?>">Удалить</a>
                         <?php endif; ?>
                     </div>
                 </div>

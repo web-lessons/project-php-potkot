@@ -14,7 +14,15 @@ $product = mysqli_fetch_array($result);
             <h1><?= $product['name'] ?></h1>
             <p><?= $product['description'] ?></p>
             <h2><?= $product['price'] ?> руб.</h2>
-            <button class="btn btn-success">Купить</button>
+            <form method="POST" action="/core/add-cart.php">
+                <div class="input-group mb-3">
+                    <input type="number" name="quantity" value="1" class="form-control col-3">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-success">Добавить в корзину</button>
+                    </div>
+                </div>
+                <input type="hidden" name="product" value="<?= $product['id'] ?>">
+            </form>
         </div>
     </div>
 </div>
