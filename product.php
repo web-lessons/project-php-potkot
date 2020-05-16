@@ -23,7 +23,16 @@ $product = mysqli_fetch_array($result);
                 </div>
                 <input type="hidden" name="product" value="<?= $product['id'] ?>">
             </form>
+            <?php
+            $sqlSearchBasket = "SELECT * FROM order_positions WHERE product_id={$product['id']} AND session_id='".session_id()."'";
+            $resultSearchBasket = mysqli_query($conn, $sqlSearchBasket);
+            if (mysqli_num_rows($resultSearchBasket)) {
+                $basketRow = mysqli_fetch_array($resultSearchBasket);
+                echo "<p>В корзине: ".$basketRow['quantity']." шт.</p>";
+            }
+            ?>
         </div>
+
     </div>
 </div>
 <?php require_once "template/footer.php" ?>

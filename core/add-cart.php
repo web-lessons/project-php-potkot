@@ -21,8 +21,7 @@ if (!empty($_POST)) {
 
     if ($product) {
 
-        $sqlSearchBasket = "SELECT * FROM order_positions 
-                               WHERE  product_id={$productId} AND session_id='{$sessionId}'";
+        $sqlSearchBasket = "SELECT * FROM order_positions WHERE product_id={$productId} AND session_id='{$sessionId}'";
         $resultSearchBasket = mysqli_query($conn, $sqlSearchBasket);
 
         if (!$resultSearchBasket) {
@@ -31,23 +30,21 @@ if (!empty($_POST)) {
             die;
         }
 
-
         if (mysqli_num_rows($resultSearchBasket) > 0) {
             $basketRow = mysqli_fetch_array($resultSearchBasket);
-            $sqlUpdateCart = "UPDATE order_positions SET quantity={$quantity} WHERE id={$basketRow['id']}";
-
+            $sqlEditCart = "UPDATE order_positions SET quantity=".($quantity + $basketRow['quantity'])." 
+              WHERE id={$basketRow['id']}";
         } else {
-            $sqlUpdateCart = "INSERT INTO order_positions (session_id, product_id, quantity, price) 
-                 VALUE ( '{$sessionId}', {$productId}, {$quantity}, {$product['price']})";
+            $sqlEditCart = "INSERT INTO order_positions 
+                   (session_id, product_id, quantity, price) 
+                     VALUE ( '{$sessionId}', {$productId}, {$quantity}, {$product['price']})";
         }
 
-        $result = mysqli_query($conn, $sqlUpdateCart);
+        $result = mysqli_query($conn, $sqlEditCart);
 
         if ($result) {
             header("Location: {$_SERVER['HTTP_REFERER']}");
         } else {
-            echo $sqlUpdateCart."<br>";
-            //echo $sqlSearchBasket."<br>";
             echo mysqli_error($conn);
             die;
         }
