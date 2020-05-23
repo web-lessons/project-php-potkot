@@ -85,7 +85,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Оформить заказ</button>
+                <a href="/order.php" class="btn btn-primary">Оформить заказ</a>
             </div>
         </div>
     </div>
